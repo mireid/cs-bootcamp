@@ -29,13 +29,15 @@ flow:
     - remote_secure_copy:
         do:
           io.cloudslang.base.remote_file_transfer.remote_secure_copy:
-            - source_host: '${filename}'
+            - source_path: '${filename}'
             - destination_host: '${host}'
             - destination_path: /tmp
             - destination_username: '${username}'
             - destination_password:
                 value: '${password}'
                 sensitive: true
+        publish:
+          - filename: filename
         navigate:
           - SUCCESS: SUCCESS
           - FAILURE: on_failure
@@ -52,8 +54,8 @@ extensions:
         x: 77
         y: 221
       remote_secure_copy:
-        x: 76
-        y: 368
+        x: 274
+        y: 188
         navigate:
           b8b82c2f-c6a2-ae90-07e4-e0a2c92849e9:
             targetId: ccf676e5-edd7-7ca8-2534-270115eb3d84
